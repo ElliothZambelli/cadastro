@@ -1,19 +1,22 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Alert } from "react-native";
 import usuarios from "../usuarios/usuarios";
-import { Avatar, Button, Icon, ListItem } from "react-native-elements";
+import { Avatar, Button, ListItem, Icon } from "react-native-elements";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default props => {
-    const modificacoes = ({ user }) => {
-        return (
-            <>
-                <Button
-                    onPress={() => props.navigation.navigate('FormularioUsuario', user)}
-                    type="clear"
-                    icon={<Icon name='editar' size={25} color='orange' />}
-                />
-            </>
-        )
+    const confirmaAcao = (item) => {
+        Alert.alert('Excluir Usuário', 'Realmente deseja excluir este usuário?', [
+            {
+                text: 'Sim',
+                onPress () {
+                    console.log('Botão sim clicado com sucesso!', item.nome)
+                }
+            },
+            {
+                text: 'Não'
+            }
+        ])
     }
 
     const mostraUsuarios = ({ item }) => {
@@ -24,6 +27,16 @@ export default props => {
                     <ListItem.Title>{item.nome}</ListItem.Title>
                     <ListItem.Subtitle>{item.email}</ListItem.Subtitle>
                 </ListItem.Content>
+                <Button
+                    onPress={() => props.navigation.navigate('FormularioUsuario', item)}
+                    type="clear"
+                    icon={<Icon name='edit' size={25} color='orange' />}
+                />
+                <Button
+                    onPress={() => confirmaAcao(item)}
+                    type="clear"
+                    icon={<Icon name='delete' size={25} color='red' />}
+                />
             </ListItem>
         )
     }
