@@ -1,8 +1,7 @@
 import React from "react";
-import { View, Text, FlatList, Alert } from "react-native";
+import { View, FlatList, Alert } from "react-native";
 import usuarios from "../usuarios/usuarios";
 import { Avatar, Button, ListItem, Icon } from "react-native-elements";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default props => {
     const confirmaAcao = (item) => {
