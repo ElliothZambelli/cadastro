@@ -33,3 +33,6 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# txt
+Para gerar o aplicativo eu usei o.txt
